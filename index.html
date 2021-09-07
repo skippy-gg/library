@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Library</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav class = "navbar">
+            <h3 class="navbar">My Library</h3>
+        </nav>
+        <div class = "container">
+            <div class ="sidebar">
+                <div class="book-title">
+                    <label for="booktitle">Book Title</label><br>
+                    <input type="text" id="booktitle" name ="booktitle">
+                </div>
+                <div class="book-author">
+                    <label for="bookauthor">Book Author</label><br>
+                    <input type="text" id="bookauthor" name ="bookauthor">
+                </div>
+                <div class="book-pages">
+                    <label for="bookpages">Book Pages</label><br>
+                    <input type="text" id="bookpages" name ="bookpages">
+                </div>
+                <div class="book-read">
+                    <label for="bookread">Have you read this book?</label><br>
+                    <input type="radio" name="bookread" value="read" checked>Yes</input>
+                    <input type="radio" name="bookread" value="not read">No</input>
+                </div>
+                <div class="addBtn">
+                    <button type="button">Add</button>
+                </div>
+                <hr>
+                <div class="book-stats">
+                    <p>Total Books: <span id="total-books"></span></p>
+                    <p>Total Pages: <span id="total-pages"></span></p>
+                    <p>Completed Books: <span id="completed-books"></span></p>
+                </div>
+                <hr>
+                <div class="storage">
+                    <button type="button">Cloud</button>
+                    <button type="button">Local</button>
+                </div>
+            </div>
+            <div class ="library"></div>
+            
+            <script src="script.js" async defer></script>
+        </div>
+    </body>
+</html>
