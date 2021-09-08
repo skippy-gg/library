@@ -3,7 +3,7 @@ let myLibrary = [];
 function Book(title, author, pages, isRead) {
     this.title = title
     this.author = author
-    this.pages = pages
+    this.pages = parseInt(pages);
     this.isRead = isRead
 }
 
@@ -43,10 +43,11 @@ function updateBookStats(){
     const totalBooks = document.getElementById("total-books");
     const totalPages = document.getElementById("total-pages");
     const completedBooks = document.getElementById("completed-books");
-    let completedCount = 200;
     let bookCount = myLibrary.length;
     let pageCount = 0;
-    pageCount = myLibrary.forEach((book) => pageCount+= parseInt(book.pages));
+    let completedCount = 0;
+    myLibrary.forEach(book => pageCount+= book.pages);
+    myLibrary.forEach(book => book.isRead === "true"? completedCount+= 1: null);
     totalBooks.textContent = bookCount;
     totalPages.textContent = pageCount;
     completedBooks.textContent = completedCount;
@@ -54,13 +55,13 @@ function updateBookStats(){
 
 function addBook(){
     const inputTitle = document.getElementById("booktitle").value
-    const inputAuthor = document.getElementById("bookpages").value
-    const inputPages = document.getElementById("bookauthor").value
+    const inputAuthor = document.getElementById("bookauthor").value
+    const inputPages = document.getElementById("bookpages").value
     const inputIsRead = document.querySelector('input[name="bookread"]:checked').value;
     let newBook = new Book(inputTitle, inputAuthor, inputPages, inputIsRead);
     addBookToLibrary(newBook);
     displayBook(newBook);
-
+    updateBookStats();
 }
 
 //EVENT LISTENERS
