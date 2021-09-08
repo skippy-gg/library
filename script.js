@@ -1,10 +1,11 @@
 let myLibrary = [];
 
-function Book(title, author, pages, isRead) {
+function Book(title, author, pages, isRead, bookID) {
     this.title = title
     this.author = author
     this.pages = parseInt(pages);
     this.isRead = isRead
+    this.bookID = bookID;
 }
 
 function addBookToLibrary(newBook) {
@@ -30,10 +31,19 @@ function displayBook(book){
     const bookIsRead = document.createElement("span");
     bookIsRead.textContent = book.isRead;
 
+    const removeBookBtn = document.createElement("button");
+    removeBookBtn.className = "removeBtn";
+    removeBookBtn.textContent = "Delete";
+
     bookContainer.appendChild(bookTitle);
     bookContainer.appendChild(bookAuthor);
     bookContainer.appendChild(bookPages);
     bookContainer.appendChild(bookIsRead);
+    bookContainer.appendChild(removeBookBtn);
+
+    bookContainer.addEventListener("click", removeBook);
+
+    bookContainer.id = book.bookID;
 
     const element = document.querySelector(".library");
     element.appendChild(bookContainer);
@@ -58,9 +68,17 @@ function addBook(){
     const inputAuthor = document.getElementById("bookauthor").value
     const inputPages = document.getElementById("bookpages").value
     const inputIsRead = document.querySelector('input[name="bookread"]:checked').value;
-    let newBook = new Book(inputTitle, inputAuthor, inputPages, inputIsRead);
+    const bookID = Math.floor(Math.random()*10000000000);
+    let newBook = new Book(inputTitle, inputAuthor, inputPages, inputIsRead, bookID);
+    
     addBookToLibrary(newBook);
     displayBook(newBook);
+    updateBookStats();
+}
+
+function removeBook(e){
+    myLibrary = myLibrary.filter(book => (book.bookID !== parseInt(e.target.parentNode.id)));
+    e.target.parentNode.remove();
     updateBookStats();
 }
 
