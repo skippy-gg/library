@@ -52,33 +52,42 @@ function updateBookStats(){
     completedBooks.textContent = completedCount;
 }
 
+function addBook(){
+    const inputTitle = document.getElementById("booktitle").value
+    const inputAuthor = document.getElementById("bookpages").value
+    const inputPages = document.getElementById("bookauthor").value
+    const inputIsRead = document.querySelector('input[name="bookread"]:checked').value;
+    let newBook = new Book(inputTitle, inputAuthor, inputPages, inputIsRead);
+    addBookToLibrary(newBook);
+    displayBook(newBook);
 
+}
 
-
-
-
+//EVENT LISTENERS
+const addButton = document.querySelector(".addBtn");
+addButton.addEventListener("click", addBook);
 
 //TESTING
 
-let test1 = new Book("test1", "test1", 111, true);
-let test2 = new Book("test2", "test2", 222, true);
-let test3 = new Book("test3", "test3", 333, true);
-let test4 = new Book("test1", "test1", 444, true);
-let test5 = new Book("test2", "test2", 555, true);
-let test6 = new Book("test3", "test3", 666, true);
-let test7 = new Book("test1", "test1", 777, true);
-let test8 = new Book("test2", "test2", 888, true);
-let test9 = new Book("test3", "test3", 999, true);
+// let test1 = new Book("test1", "test1", 111, true);
+// let test2 = new Book("test2", "test2", 222, true);
+// let test3 = new Book("test3", "test3", 333, true);
+// let test4 = new Book("test1", "test1", 444, true);
+// let test5 = new Book("test2", "test2", 555, true);
+// let test6 = new Book("test3", "test3", 666, true);
+// let test7 = new Book("test1", "test1", 777, true);
+// let test8 = new Book("test2", "test2", 888, true);
+// let test9 = new Book("test3", "test3", 999, true);
 
-addBookToLibrary(test1);
-addBookToLibrary(test2);
-addBookToLibrary(test3);
-addBookToLibrary(test4);
-addBookToLibrary(test5);
-addBookToLibrary(test6);
-addBookToLibrary(test7);
-addBookToLibrary(test8);
-addBookToLibrary(test9);
+// addBookToLibrary(test1);
+// addBookToLibrary(test2);
+// addBookToLibrary(test3);
+// addBookToLibrary(test4);
+// addBookToLibrary(test5);
+// addBookToLibrary(test6);
+// addBookToLibrary(test7);
+// addBookToLibrary(test8);
+// addBookToLibrary(test9);
 
-displayLibrary();
-updateBookStats();
+// displayLibrary();
+// updateBookStats();
